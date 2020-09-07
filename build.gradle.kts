@@ -73,3 +73,22 @@ dependencies {
     testImplementation(gradleTestKit())
     detektPlugins("io.gitlab.arturbosch.detekt", "detekt-formatting", "1.6.0")
 }
+
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+            }
+        }
+    }
+//    publications {
+//        register("gpr") {
+//            from(components["java"])
+//        }
+//    }
+}
