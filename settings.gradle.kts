@@ -15,4 +15,4 @@ pluginManagement {
 //  }
 }
 
-rootProject.name = "gradle-file-encrypt"//todo
+rootProject.name = "tutu-gradle-bootstrap"
