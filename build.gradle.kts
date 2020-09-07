@@ -13,12 +13,12 @@ plugins {
     id("com.github.ben-manes.versions") version "0.28.0"
     id("io.gitlab.arturbosch.detekt") version "1.6.0"
     id("com.gradle.plugin-publish") version "0.12.0"
-//    id("ru.tutu.plug1") version "0.2.0"
+//    id("ru.tutu.bootstrap") version "0.4.0"//todo sample usage
 }
 
 val PLUGIN_NAME = "bootstrap-plugin"
 val PLUGIN_ID = "ru.tutu.bootstrap"
-val VERSION = "0.3.0"
+val VERSION = "0.4.0"
 group = "ru.tutu"
 version = VERSION
 

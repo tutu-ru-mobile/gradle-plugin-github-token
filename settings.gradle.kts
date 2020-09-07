@@ -1,7 +1,15 @@
 pluginManagement {
     repositories {
-        mavenLocal()
-        gradlePluginPortal()//todo alternative?: maven { setUrl("https://plugins.gradle.org/m2/") }
+//        mavenLocal()
+        gradlePluginPortal()
+        maven {
+            setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin")
+//            credentials {
+//                //https://github.com/settings/tokens
+//                username = getVar("MAVEN_USER", "mavenUser")
+//                password = getVar("MAVEN_PASSWORD", "mavenPassword")
+//            }
+        }
     }
 
 //  resolutionStrategy {
