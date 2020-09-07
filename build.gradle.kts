@@ -11,7 +11,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.4.0"
+    kotlin("jvm") version "1.3.72"
     `maven-publish`
     id("java-gradle-plugin")
     id("com.github.ben-manes.versions") version "0.28.0"
