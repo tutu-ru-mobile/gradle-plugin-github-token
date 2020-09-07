@@ -28,7 +28,7 @@ class TutuGradlePlugin : Plugin<Project> {
         saveExecute("configureTutuTasks") {
             project.tasks.create("myTask1").doFirst {
                 TutuLog.warning(it.info)
-                startSimpleServer(8081)
+                startSimpleServer(55555)//todo github app 55555
             }
         }
     }
