@@ -1,8 +1,8 @@
 
 rootProject.name = "tutu-gradle-bootstrap"
-includeBuild("tutu_gradle") {
+includeBuild("include_build") {
     dependencySubstitution {
-        substitute(module("ru.tutu:tutu_gradle:1.0.0")).with(project(":"))
+        substitute(module("ru.tutu:tutu_gradle:1.0.0")).with(project(":tutu_gradle"))
         //substitute(module("com.github.raniejade:godot-kotlin-gradle-plugin:0.1.0")).with(project(":godot-kotlin-gradle-plugin"))
     }
 }
