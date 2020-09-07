@@ -1,0 +1,48 @@
+apply plugin: "java-gradle-plugin"
+apply plugin: "kotlin"
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+    jcenter()
+    maven { url "https://dl.bintray.com/kotlin/ktor" }
+}
+
+gradlePlugin {
+    plugins {
+        customPlugin {
+            id = 'tutu-gradle'//todo
+            implementationClass = 'ru.tutu.gradle.TutuGradlePlugin'
+        }
+    }
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//    implementation "com.github.pengrad:java-telegram-bot-api:4.0.0"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//    implementation "org.eclipse.jgit:org.eclipse.jgit:4.11.0.201803080745-r"
+//    implementation "com.jcraft:jsch.agentproxy.jsch:0.0.9"
+//    implementation "com.jcraft:jsch.agentproxy.usocket-jna:0.0.9"
+//    implementation "com.jcraft:jsch.agentproxy.sshagent:0.0.9"
+
+//    def ktor_version = "1.2.2"
+//    compile "io.ktor:ktor-client-core:$ktor_version"
+//    compile "io.ktor:ktor-client-core-jvm:$ktor_version"
+//    compile "io.ktor:ktor-client-apache:$ktor_version"
+
+//    implementation "com.google.code.gson:gson:2.8.5"
+
+    testImplementation "org.slf4j:slf4j-jdk14:1.7.25"
+    testImplementation "junit:junit:4.12"
+
+}

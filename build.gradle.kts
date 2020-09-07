@@ -4,6 +4,10 @@ buildscript {
     repositories {
         jcenter()
     }
+    dependencies {
+        classpath("ru.tutu:tutu_gradle:1.0.0")
+    }
+
 }
 
 plugins {
