@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-./gradlew client:myBuildProduction
+./gradlew client:webBuildProduction
 
 cp -r client/build/distributions/* docs
 du -sh docs/*

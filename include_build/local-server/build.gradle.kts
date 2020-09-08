@@ -21,3 +21,16 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
+
+tasks {
+    getByName("processResources") {
+        dependsOn(":client:webBuildProduction")
+    }
+}
+sourceSets {
+    main {
+        resources {
+            srcDirs("src/main/resources", "../client/build/distributions")
+        }
+    }
+}

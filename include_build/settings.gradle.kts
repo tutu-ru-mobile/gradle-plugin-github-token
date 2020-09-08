@@ -1,5 +1,5 @@
-include(":server-localhost")
-include(":tutu_gradle")
+include("old-server-localhost")
+include("tutu_gradle")
 include("github")
 include("client")
 include("network")

@@ -8,10 +8,7 @@ import io.ktor.client.statement.*
 import io.ktor.content.TextContent
 import io.ktor.http.ContentType
 import io.ktor.http.HttpMethod
-import io.ktor.http.content.default
-import io.ktor.http.content.files
-import io.ktor.http.content.static
-import io.ktor.http.content.staticRootFolder
+import io.ktor.http.content.*
 import io.ktor.response.header
 import io.ktor.response.respondText
 import io.ktor.routing.get
@@ -35,13 +32,17 @@ fun main() {
     }) {
         routing {
             static("/") {
-                staticRootFolder = listOf(
-                    File("client/build/distributions"),
-                    File("../client/build/distributions")
-                ).first { it.exists() }
-
-                files(".")
-                default("index.html")
+                if(true) {
+                    resources("")
+                    defaultResource("index.html")
+                } else {
+                    staticRootFolder = listOf(
+                            File("client/build/distributions"),
+                            File("../client/build/distributions")
+                    ).first { it.exists() }
+                    files(".")
+                    default("index.html")
+                }
             }
         }
     }.start(wait = false)

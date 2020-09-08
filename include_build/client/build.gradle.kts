@@ -40,7 +40,7 @@ dependencies {
 }
 
 tasks {
-    register("myBuildProduction") {
+    register("webBuildProduction") {
         dependsOn("browserProductionWebpack")
     }
     register("myRun") {
