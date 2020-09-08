@@ -1,11 +1,14 @@
 package ru.tutu.gradle
 
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
 import org.sample.startSimpleServer
 import ru.tutu.log.PrintLogs
 import ru.tutu.log.TutuLog
+import runStaticServer
 
 class TutuGradlePlugin : Plugin<Project> {
 
@@ -28,7 +31,8 @@ class TutuGradlePlugin : Plugin<Project> {
         saveExecute("configureTutuTasks") {
             project.tasks.create("myTask1").doFirst {
                 TutuLog.warning(it.info)
-                startSimpleServer(55555)//todo github app 55555
+                runStaticServer()
+//                startSimpleServer(55555)//todo github app 55555
             }
         }
     }
