@@ -28,7 +28,7 @@ gradlePlugin {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation(project(":server-localhost"))
+    implementation(project(":old-server-localhost"))
 
     testImplementation "org.slf4j:slf4j-jdk14:1.7.25"
     testImplementation "junit:junit:4.12"
