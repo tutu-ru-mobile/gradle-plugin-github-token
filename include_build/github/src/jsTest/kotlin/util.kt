@@ -1,0 +1,1 @@
+external fun setInterval(callback: () -> Unit, timeS: Float)

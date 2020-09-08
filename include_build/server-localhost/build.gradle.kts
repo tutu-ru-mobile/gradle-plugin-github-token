@@ -1,6 +1,6 @@
 plugins {
   java//delete?
-  kotlin("jvm") version "1.3.72"
+  kotlin("jvm") //version "1.3.72"
   application // use at dist.sh
 }
 
