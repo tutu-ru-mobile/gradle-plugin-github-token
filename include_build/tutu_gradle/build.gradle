@@ -20,7 +20,7 @@ repositories {
 gradlePlugin {
     plugins {
         customPlugin {
-            id = 'tutu-gradle'//todo
+            id = 'ru-tutu-github-package'
             implementationClass = 'ru.tutu.gradle.TutuGradlePlugin'
         }
     }

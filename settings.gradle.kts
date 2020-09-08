@@ -23,8 +23,8 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             when (requested.id.id) {
-                "tutu-gradle" -> useModule("ru.tutu:tutu_gradle:1.0.0")
-//                "ru-tutu-bootstrap" -> useModule("ru.tutu:tutu_gradle:1.0.0")
+//                "tutu-gradle" -> useModule("ru.tutu:tutu_gradle:1.0.0")
+                "ru-tutu-github-package" -> useModule("ru.tutu:tutu_gradle:1.0.0")
 ////        "kotlinx-serialization" -> useModule("org.jetbrains.kotlin:kotlin-serialization:${requested.version}")
 ////        "org.jetbrains.kotlin.multiplatform" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${target.version}")
             }
