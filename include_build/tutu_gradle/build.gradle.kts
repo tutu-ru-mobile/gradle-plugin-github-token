@@ -60,7 +60,7 @@ dependencies {
 
     compileOnly(gradleApi())
     implementation("org.eclipse.jgit", "org.eclipse.jgit", "5.4.0.201906121030-r")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.72")//todo kotlin version
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION")
 //    implementation(kotlin("stdlib-jdk8", "1.3.70"))//todo delete
 //    implementation(project(":old-server-localhost"))//todo delete
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")

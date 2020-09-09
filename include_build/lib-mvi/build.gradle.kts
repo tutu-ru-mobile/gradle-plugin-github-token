@@ -2,8 +2,6 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform")
 }
 
-val COROUTINES_VERSION = "1.3.7"
-
 kotlin {
     js {
         useCommonJs()

@@ -1,6 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "1.3.72" apply false
-//    id("kotlinx-serialization") version "1.3.72" apply false
+    id("org.jetbrains.kotlin.multiplatform") version KOTLIN_VERSION apply false
 }
 
 allprojects {

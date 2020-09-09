@@ -2,10 +2,6 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform")
 }
 
-val KT_WRAPPER_V = "pre.102-kotlin-1.3.72"
-val REACT_KT_V = "16.13.1"
-val COROUTINES_VERSION = "1.3.7"
-
 kotlin {
     js {
         useCommonJs()
