@@ -4,6 +4,7 @@ sealed class Intent {
     object ReloadPage : Intent()
     class ReceiveTempCode(val code: String) : Intent()
     class TokenLoaded(val token: String) : Intent()
+    class TokenSaved(val response: String) : Intent()
     class Error(val throwable: Throwable) : Intent()
 }
 

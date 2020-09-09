@@ -1,4 +1,5 @@
 import io.ktor.http.content.*
+import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
@@ -34,9 +35,10 @@ fun runStaticWebServer(callback: (token: String) -> Unit) {
                     get("savetoken") {
                         val token: String? = context.parameters["token"]
                         if (token != null) {
+                            context.respondText("done")
                             callback(token)
-                            server?.stop(0, 0)
-                            job.cancel()
+//                            server?.stop(0, 0)
+//                            job.cancel()
                         }
                     }
                     static("/") {

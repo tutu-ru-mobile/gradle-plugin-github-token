@@ -5,6 +5,7 @@ import IState
 data class AppState(
     val oAuthTempCode: String? = null,
     val authToken: String? = null,
+    val tokenSavedToLocalhost:Boolean = false,
     val screen: Screen? = null
 ) : IState {
     sealed class Screen {

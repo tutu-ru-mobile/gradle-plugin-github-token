@@ -31,11 +31,17 @@ val store = Mvi.store<AppState, Intent, AppSideEffect>(
             }
         }
         is AppSideEffect.SaveTokenToLocalhost -> {
-            requestStr(
+            val response = requestStr(
                     "http://localhost:55555/savetoken",//todo simplify
                     mapOf("token" to effect.token),
                     method = Method.GET
             )
+            response.onSuccess {
+                store.dispatch(Intent.TokenSaved(it))
+            }
+            response.onFailure {
+                store.dispatch(Intent.Error(Exception("save token error")))
+            }
         }
     }
 }

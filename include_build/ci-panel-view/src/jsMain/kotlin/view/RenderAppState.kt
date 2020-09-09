@@ -40,7 +40,7 @@ fun RBuilder.renderAppState(state: AppState, userIntent: (Intent) -> Unit) {
                             }
                         }
                         //a(href = href) { +"OAuth with GitHub 2" }
-                    } else if (state.authToken != null) {
+                    } else if (state.authToken != null && state.tokenSavedToLocalhost == true) {
                         h2 { +"Done!" }
                         br {}
                         +"GitHub token encrypted and saved to ~/.gradle/gradle.properties"
