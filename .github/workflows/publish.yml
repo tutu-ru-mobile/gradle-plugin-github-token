@@ -26,5 +26,6 @@ jobs:
         USERNAME : "GitHub Actions"
         MAVEN_USER : "GitHub Actions"
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        MAVEN_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
 
