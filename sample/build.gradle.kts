@@ -1,8 +1,8 @@
 import java.util.*
 
 plugins {
-    id("ru-tutu-github-package") //todo version "1.0.0"
-    kotlin("jvm")
+    id("ru-tutu-github-package") version "1.0.0"
+    kotlin("jvm") //version "1.3.72"
 }
 
 //tutuGithubPackages {
