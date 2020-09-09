@@ -27,7 +27,6 @@ fun getLocalProp(key: String): String {
 }
 
 repositories {
-    mavenLocal()//todo
     maven {
 //        setUrl("https://maven.pkg.github.com/tutu-ru-mobile/android-core/")
         setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin/")
@@ -42,5 +41,5 @@ repositories {
 }
 
 dependencies {
-    implementation("ru.tutu:lib1:1.0")
+    implementation("ru.tutu:lib1:1.1")
 }

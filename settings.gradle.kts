@@ -8,7 +8,6 @@ includeBuild("include_build") {
 }
 pluginManagement {
     repositories {
-        mavenLocal()
         gradlePluginPortal()
         maven {
             setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin")

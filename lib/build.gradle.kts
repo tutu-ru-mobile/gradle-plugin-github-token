@@ -32,7 +32,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "ru.tutu"
             artifactId = "lib1"
-            version = "1.1"
+            version = "1.2"
 
             from(components["java"])
             artifact(sourcesJar.get())
