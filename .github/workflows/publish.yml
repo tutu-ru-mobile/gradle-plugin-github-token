@@ -24,5 +24,6 @@ jobs:
 #      run: ./gradlew publishAllPublicationsToGitHubPackagesRepository
       env:
         USERNAME : "GitHub Actions"
+        MAVEN_USER : "GitHub Actions"
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
