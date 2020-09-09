@@ -41,5 +41,5 @@ repositories {
 }
 
 dependencies {
-    implementation("ru.tutu:lib1:1.1")
+    implementation("ru.tutu:lib1:1.2")
 }
