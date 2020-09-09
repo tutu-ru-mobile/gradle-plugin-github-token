@@ -33,8 +33,8 @@ repositories {
         setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin/")
         credentials {
             //https://github.com/settings/tokens
-            username = getLocalProp("github.user")//getVar("MAVEN_USER", "mavenUser")
-            password = getLocalProp("github.packageToken")//getVar("MAVEN_PASSWORD", "mavenPassword")
+            username = getVar("MAVEN_USER", "github.user")//getVar("MAVEN_USER", "mavenUser")
+            password = getVar("MAVEN_PASSWORD", "github.packageToken")//getVar("MAVEN_PASSWORD", "mavenPassword")
         }
     }
     google()
