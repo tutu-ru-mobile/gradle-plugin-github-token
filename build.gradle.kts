@@ -1,11 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
+    val kotlin_version by extra("1.4.0")
     repositories {
         jcenter()
     }
     dependencies {
         classpath("ru.tutu:tutu_gradle:1.0.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 
 }

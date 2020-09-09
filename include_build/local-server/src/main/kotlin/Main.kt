@@ -3,20 +3,25 @@ import io.ktor.routing.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
 import java.io.File
 
 fun main() {
-    runStaticServer()
+    runStaticWebServer() {}
 }
 
 @OptIn(EngineAPI::class)
-fun runStaticServer(port: Int = 55555) {
+fun runStaticWebServer(callback: (token: String) -> Unit) {
+    val port: Int = 55555
     runBlocking {
         //todo сделать timeout чтобы сборка не зависла на CI/CD
-        coroutineScope {
-            embeddedServer(if (true) Netty else CIO, port, configure = {
+        coroutineScope() {
+            val job = this
+            var server: BaseApplicationEngine? = null
+            server = embeddedServer(if (true) Netty else CIO, port, configure = {
                 //конфигурация может быть специфичная для Netty или CIO
                 connectionGroupSize
                 workerGroupSize
@@ -26,6 +31,14 @@ fun runStaticServer(port: Int = 55555) {
                 //shareWorkGroup
             }) {
                 routing {
+                    get("savetoken") {
+                        val token: String? = context.parameters["token"]
+                        if (token != null) {
+                            callback(token)
+                            server?.stop(0, 0)
+                            job.cancel()
+                        }
+                    }
                     static("/") {
                         if (true) {
                             resources("")
@@ -40,7 +53,8 @@ fun runStaticServer(port: Int = 55555) {
                         }
                     }
                 }
-            }.start(wait = false)
+            }
+            server.start(wait = false)
             println("http://localhost:$port")//todo print only localhost
         }
     }

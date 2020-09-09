@@ -20,7 +20,8 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Publish with Gradle
-      run: ./gradlew publishAllPublicationsToGitHubPackagesRepository
+      run: ./publish_lib.sh
+#      run: ./gradlew publishAllPublicationsToGitHubPackagesRepository
       env:
         USERNAME : "GitHub Actions"
         TOKEN: ${{ secrets.GITHUB_TOKEN }}

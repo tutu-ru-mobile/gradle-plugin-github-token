@@ -33,3 +33,4 @@ pluginManagement {
 }
 
 include("sample")
+include("lib")

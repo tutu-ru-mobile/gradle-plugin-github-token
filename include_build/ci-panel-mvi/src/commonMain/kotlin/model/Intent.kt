@@ -10,4 +10,5 @@ sealed class Intent {
 sealed class AppSideEffect {
     object ReloadPage : AppSideEffect()
     class LoadToken(val tempCode: String) : AppSideEffect()
+    class SaveTokenToLocalhost(val token: String) : AppSideEffect()
 }

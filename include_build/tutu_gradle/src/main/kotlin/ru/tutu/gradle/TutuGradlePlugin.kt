@@ -1,14 +1,10 @@
 package ru.tutu.gradle
 
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.runBlocking
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.Task
-import org.sample.startSimpleServer
 import ru.tutu.log.PrintLogs
 import ru.tutu.log.TutuLog
-import runStaticServer
+import runStaticWebServer
 
 class TutuGradlePlugin : Plugin<Project> {
 
@@ -29,10 +25,15 @@ class TutuGradlePlugin : Plugin<Project> {
 
     fun afterEvaluate(project: Project) {
         saveExecute("configureTutuTasks") {
-            project.tasks.create("myTask1").doFirst {
-                TutuLog.warning(it.info)
-                runStaticServer()
-//                startSimpleServer(55555)//todo github app 55555
+            project.tasks.create("myTask").doFirst {task ->
+                TutuLog.warning("task: ${task.name}")
+                runStaticWebServer {token ->
+                    val file = project.rootProject.rootDir.resolve("local.properties")
+                    val str = file.readText()
+                    file.writeText(str + "\ngithub.packageToken=${token}")
+                    TutuLog.info("done, github token saved")
+                    System.exit(0)
+                }
             }
         }
     }
@@ -47,6 +48,3 @@ class TutuGradlePlugin : Plugin<Project> {
     }
 
 }
-
-val Task.info get() = "task $name"
-

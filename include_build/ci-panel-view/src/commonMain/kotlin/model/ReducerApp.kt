@@ -10,9 +10,10 @@ fun ciPanelReducer(
         is Intent.TokenLoaded -> {
             println("token: ${intent.token}")//todo
             resultState(
-                state.copy(
-                    authToken = intent.token
-                )
+                    state.copy(
+                            authToken = intent.token
+                    ),
+                    AppSideEffect.SaveTokenToLocalhost(intent.token)
             )
         }
         is Intent.Error -> {
