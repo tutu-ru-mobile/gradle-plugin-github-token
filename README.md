@@ -16,8 +16,7 @@ plugins {
 // Configuration:
 gitHubToken {
     scope = "read:packages"
-    secretAES = "some_secret_key"
-    saveToHomeDir = true
+    secretAES = "optional_secret_key"
 }
 // Token usage:
 val token:String = gitHubToken.getToken(project)
@@ -32,8 +31,7 @@ plugins {
 //Configuration:
 gitHubToken {
     scope = "read:packages"
-    secretAES = "some_secret_key"
-    saveToHomeDir = true
+    secretAES = "optional_secret_key"
 }
 // Token usage:
 def token = gitHubToken.getToken(project)

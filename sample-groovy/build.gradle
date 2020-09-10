@@ -6,7 +6,6 @@ plugins {
 gitHubToken {
     secretAES = "some_secret_key"
     scope = "read:packages"
-    saveToHomeDir = true
 }
 
 repositories {
