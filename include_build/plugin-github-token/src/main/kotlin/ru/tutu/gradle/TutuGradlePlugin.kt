@@ -8,7 +8,7 @@ import runStaticWebServer
 
 class TutuGradlePlugin : Plugin<Project> {
 
-    lateinit var config: TutuConfig
+    lateinit var config: GitHubTokenExtension
 
     init {
         TutuLog.addPlugin(PrintLogs())
@@ -16,7 +16,7 @@ class TutuGradlePlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         saveExecute("configure tutu-gradle plugin") {
-            config = project.extensions.create("tutu", TutuConfig::class.java)
+            config = project.extensions.create("tutu", GitHubTokenExtension::class.java)
             project.afterEvaluate {
                 afterEvaluate(project)
             }

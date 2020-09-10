@@ -8,7 +8,7 @@ plugins {
 }
 
 val PLUGIN_NAME = "GitHub package plugin"
-val PLUGIN_ID = "ru-tutu-github-package"
+val PLUGIN_ID = "ru-tutu-github-token"
 val VERSION = "1.0.0"
 
 group = "ru.tutu"

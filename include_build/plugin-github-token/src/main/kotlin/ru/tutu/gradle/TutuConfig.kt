@@ -3,14 +3,14 @@ package ru.tutu.gradle
 import org.gradle.api.Project
 import java.util.*
 
-open class TutuConfig {
+open class GitHubTokenExtension {
     var propertyPrefix: String = "github.packageToken"//todo rename
     var configVar1: String = "not set"//todo remove
 
     /**
      * Save github token to ~/.gradle/gradle.properties
      */
-    var homeDirConfig: HomeDirConfig = HomeDirConfig()//todo rename homeDir
+    var homeDir: HomeDirConfig = HomeDirConfig()//todo rename homeDir
 
     /**
      * Scope of GitHub token. Use white space delimiter.

@@ -2,7 +2,7 @@ import java.util.*
 import ru.tutu.gradle.*
 
 plugins {
-    id("ru-tutu-github-package") version "1.0.0"
+    id("ru-tutu-github-token") version "1.0.0"
     kotlin("jvm") version "1.3.72"
 }
 
