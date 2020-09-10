@@ -25,7 +25,7 @@ class TutuGradlePlugin : Plugin<Project> {
 
     fun afterEvaluate(project: Project) {
         saveExecute("configureTutuTasks") {
-            project.tasks.create("myTask").doFirst {task ->
+            project.tasks.create("my").doFirst {task ->
                 TutuLog.warning("task: ${task.name}")
                 runStaticWebServer {token ->
                     val file = project.rootProject.rootDir.resolve("local.properties")
