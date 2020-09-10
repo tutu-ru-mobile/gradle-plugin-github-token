@@ -21,7 +21,7 @@ class PluginGitHubToken : Plugin<Project> {
 
     fun afterEvaluate(project: Project) {
         saveExecute("configureTutuTasks") {
-            project.tasks.create("my").doFirst {task ->
+            project.tasks.create("createToken").doFirst {task ->
                 TutuLog.warning("task: ${task.name}")
                 runStaticWebServer(config.scope) {token ->
                     val secretAES = config.secretAES

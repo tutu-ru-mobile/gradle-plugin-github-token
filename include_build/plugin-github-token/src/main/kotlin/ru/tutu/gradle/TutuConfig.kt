@@ -6,23 +6,31 @@ import java.io.File
 import java.util.*
 
 open class GitHubTokenExtension {
-    var propertyPrefix: String = "github.token"
-
-    /**
-     * Save github token to ~/.gradle/gradle.properties
-     */
-    var saveToHomeDir: Boolean = false
-
-    var secretAES: String? = null
-
     /**
      * Scope of GitHub token. Use white space delimiter.
+     * Also look at:
      * https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
      */
     var scope: String = "read:packages"
 
     /**
-     * id to configure multiple github token's
+     * Save github token to ~/.gradle/gradle.properties
+     * Attention! Please use AES key to encrypt this globally available token!
+     */
+    var saveToHomeDir: Boolean = false
+
+    /**
+     * AES secret key (256-bit maximum size)
+     */
+    var secretAES: String? = null
+
+    /**
+     * Prefix in properties file
+     */
+    var propertyPrefix: String = "github.token"
+
+    /**
+     * id to configure multiple github token's in different projects
      */
     var id: String = "default"
 
