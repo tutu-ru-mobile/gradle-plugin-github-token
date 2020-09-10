@@ -1,6 +1,8 @@
 # gradle plugin ru-tutu-github-token
 
 Plugins helps in creation and usage of GitHub token.
+By default token will be saved to ```local.properties``` (also please add to .gitignore)
+
 1. Use task ```./gradlew createToken``` to request GitHub token.
 2. Task will print ```http://localhost:55555```. Navigate to this url in your browser.
 3. Request and approve GitHub token in browser.
@@ -47,10 +49,21 @@ gitHubToken {
     var scope: String = "read:packages"
 
     /**
-     * Save github token to ~/.gradle/gradle.properties. 
+     * Save token at local.properties
+     * Attention! Please add local.properties to .gitignore
+     */
+    fun storeTokenAtLocalProperties(): Unit
+
+    /**
+     * Save github token at ~/.gradle/gradle.properties
      * Attention! Please use AES key to encrypt this globally available token!
      */
-    var saveToHomeDir: Boolean = false
+    fun storeTokenAtHomeGradleProperties(): Unit
+
+    /**
+     * You may specify custom *.properties file location
+     */
+    fun storeTokenAtCustonLocation(file: File): Unit
 
     /**
      * AES secret key (256-bit maximum size)

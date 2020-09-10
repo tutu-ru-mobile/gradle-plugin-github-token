@@ -14,10 +14,32 @@ open class GitHubTokenExtension {
     var scope: String = "read:packages"
 
     /**
-     * Save github token to ~/.gradle/gradle.properties
+     * Location of *.properties file to save github token
+     */
+    internal var tokenLocation: TokenLocation = TokenLocation.LocalProperties
+
+    /**
+     * Save token at local.properties
+     * Attention! Please add local.properties to .gitignore
+     */
+    fun storeTokenAtLocalProperties() {
+        tokenLocation = TokenLocation.LocalProperties
+    }
+
+    /**
+     * Save github token at ~/.gradle/gradle.properties
      * Attention! Please use AES key to encrypt this globally available token!
      */
-    var saveToHomeDir: Boolean = false
+    fun storeTokenAtHomeGradleProperties() {
+        tokenLocation = TokenLocation.HomeGradleProperties
+    }
+
+    /**
+     * You may specify custom *.properties file location
+     */
+    fun storeTokenAtCustonLocation(file: File) {
+        tokenLocation = TokenLocation.CustomLocation(file)
+    }
 
     /**
      * AES secret key (256-bit maximum size)
@@ -35,7 +57,7 @@ open class GitHubTokenExtension {
     var id: String = "default"
 
     fun getToken(project: Project): String {
-        val propertiesFile = if (saveToHomeDir) userHomeGradleProperties() else project.localProperties()
+        val propertiesFile = tokenLocation.getPropertiesFile(project)
         val properties = Properties()
         if (propertiesFile.exists()) {
             properties.load(propertiesFile.inputStream())
@@ -68,10 +90,42 @@ open class GitHubTokenExtension {
 
 }
 
-fun userHomeGradleProperties():File =
+internal sealed class TokenLocation {
+    /**
+     * Save github token to local.properties
+     * Attention! Please add local.properties to .gitignore
+     */
+    object LocalProperties : TokenLocation()
+
+    /**
+     * Save github token to ~/.gradle/gradle.properties
+     * Attention! Please use AES key to encrypt this globally available token!
+     */
+    object HomeGradleProperties : TokenLocation()
+
+    /**
+     * You may specify custom *.properties file location
+     */
+    class CustomLocation(val file: File) : TokenLocation()
+}
+
+internal fun TokenLocation.getPropertiesFile(project: Project): File =
+    when (this) {
+        is TokenLocation.LocalProperties -> {
+            project.localProperties()
+        }
+        is TokenLocation.HomeGradleProperties -> {
+            userHomeGradleProperties()
+        }
+        is TokenLocation.CustomLocation -> {
+            this.file
+        }
+    }
+
+internal fun userHomeGradleProperties(): File =
     File(System.getProperty("user.home"))
         .resolve(".gradle")
         .resolve("gradle.properties")
 
-fun Project.localProperties():File =
+internal fun Project.localProperties(): File =
     rootProject.file("local.properties")

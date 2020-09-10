@@ -25,12 +25,7 @@ class PluginGitHubToken : Plugin<Project> {
                 TutuLog.warning("task: ${task.name}")
                 runStaticWebServer(config.scope) {token ->
                     val secretAES = config.secretAES
-                    val propertiesFile =
-                        if (config.saveToHomeDir) {
-                            userHomeGradleProperties()
-                        } else {
-                            project.localProperties()
-                        }
+                    val propertiesFile = config.tokenLocation.getPropertiesFile(project)
                     val textFileContent: String =
                         if (propertiesFile.exists()) {
                             propertiesFile.readText()
@@ -48,11 +43,9 @@ class PluginGitHubToken : Plugin<Project> {
                         propertiesFile.parentFile.mkdirs()
                     }
                     propertiesFile.writeText(
-                        """
-                        $textFileContent
-                        ${config.getPropertyKey()}=$writeTokenStr
-                        
-                        """.trimIndent()
+                        textFileContent + "\n" +
+                                "${config.getPropertyKey()}=$writeTokenStr" +
+                                "\n"
                     )
                     TutuLog.info("done, github token saved")
                     System.exit(0)
