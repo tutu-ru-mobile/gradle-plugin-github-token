@@ -43,7 +43,7 @@ fun RBuilder.renderAppState(state: AppState, userIntent: (Intent) -> Unit) {
                     } else if (state.authToken != null && state.tokenSavedToLocalhost == true) {
                         h2 { +"Done!" }
                         br {}
-                        +"GitHub token encrypted and saved to ~/.gradle/gradle.properties"
+                        +"GitHub token saved"
                         br {}
                         +"Now you may close browser"
                     } else {
