@@ -36,7 +36,7 @@ gitHubToken {
 // Token usage:
 def token = gitHubToken.getToken(project)
 ```
-
+Look at sample projects [sample-kts|sample-kts] and [sample-groovy|sample-groovy].
 ## Configuration
 ```Kotlin
 gitHubToken {
@@ -70,3 +70,4 @@ gitHubToken {
 }
 ```
 
+## Source code and build
