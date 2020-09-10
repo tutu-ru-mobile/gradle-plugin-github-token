@@ -31,4 +31,5 @@ pluginManagement {
     }
 }
 
-include("sample")
+include("sample-kts")
+include("sample-groovy")

@@ -1,2 +1,3 @@
 #!/bin/bash
-./gradlew sample:build --refresh-dependencies
+./gradlew sample-groovy:build --refresh-dependencies
+./gradlew sample-kts:build --refresh-dependencies
