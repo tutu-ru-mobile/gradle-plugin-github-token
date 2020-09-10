@@ -43,6 +43,10 @@ class PluginGitHubToken : Plugin<Project> {
                         } else {
                             token
                         }
+
+                    if(!propertiesFile.parentFile.exists()) {
+                        propertiesFile.parentFile.mkdirs()
+                    }
                     propertiesFile.writeText(
                         """
                         $textFileContent
