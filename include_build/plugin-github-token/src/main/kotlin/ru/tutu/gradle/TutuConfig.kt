@@ -1,10 +1,12 @@
 package ru.tutu.gradle
 
 import org.gradle.api.Project
+import ru.tutu.log.TutuLog
+import java.io.File
 import java.util.*
 
 open class GitHubTokenExtension {
-    var propertyPrefix: String = "github.packageToken"//todo rename
+    var propertyPrefix: String = "github.token"
 
     /**
      * Save github token to ~/.gradle/gradle.properties
@@ -25,8 +27,8 @@ open class GitHubTokenExtension {
     var id: String = "default"
 
     fun getToken(project: Project): String {
+        val propertiesFile = if (saveToHomeDir) userHomeGradleProperties() else project.localProperties()
         val properties = Properties()
-        val propertiesFile = project.rootProject.file("local.properties")
         if (propertiesFile.exists()) {
             properties.load(propertiesFile.inputStream())
             val property: String? = properties.getProperty(getPropertyKey())
@@ -38,12 +40,12 @@ open class GitHubTokenExtension {
                     property
                 }
             } else {
-                return "todo"//todo
-                throw Error("property ${getPropertyKey()} not exists")
+                TutuLog.error("property key ${getPropertyKey()} not exists")
+                return "error"
             }
         } else {
-//        return "todo_error"//todo
-            throw Error("local.properties not exists")
+            TutuLog.error("properties file (${propertiesFile.path}) not exists")
+            return "error"
         }
     }
 
@@ -57,3 +59,11 @@ open class GitHubTokenExtension {
     }
 
 }
+
+fun userHomeGradleProperties():File =
+    File(System.getProperty("user.home"))
+        .resolve(".gradle")
+        .resolve("gradle.properties")
+
+fun Project.localProperties():File =
+    rootProject.file("local.properties")

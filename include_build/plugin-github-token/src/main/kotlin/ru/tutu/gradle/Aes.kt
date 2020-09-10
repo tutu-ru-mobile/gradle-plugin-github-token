@@ -1,13 +1,14 @@
 package ru.tutu.gradle
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider
+import ru.tutu.log.TutuLog
 import java.security.*
 import java.util.*
 import javax.crypto.*
 import javax.crypto.spec.SecretKeySpec
 
 object Aes {
-    fun encrypt(strToEncrypt: String, secret_key: String): String? {
+    fun encrypt(strToEncrypt: String, secret_key: String): String {
         Security.addProvider(BouncyCastleProvider())
         var keyBytes: ByteArray
 
@@ -31,8 +32,8 @@ object Aes {
         } catch (t:Throwable) {
             t.printStackTrace()
         }
-
-        return null
+        TutuLog.error("encrypt fail")
+        return "error"
     }
 
     fun decrypt(key: String, strToDecrypt: String): String {
@@ -58,7 +59,8 @@ object Aes {
         } catch (t:Throwable) {
             t.printStackTrace()
         }
-        return "todo error"
+        TutuLog.error("decrypt fail")
+        return "error"
     }
 }
 

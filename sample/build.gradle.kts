@@ -9,6 +9,7 @@ plugins {
 gitHubToken {
     secretAES = "some_secret_key"
     scope = "read:packages"
+    saveToHomeDir = true
 }
 
 fun getVar2(env: String): String {

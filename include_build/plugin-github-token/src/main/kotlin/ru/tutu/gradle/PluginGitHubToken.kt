@@ -10,10 +10,6 @@ class PluginGitHubToken : Plugin<Project> {
 
     lateinit var config: GitHubTokenExtension
 
-    init {
-        TutuLog.addPlugin(PrintLogs())
-    }
-
     override fun apply(project: Project) {
         saveExecute("configure tutu-gradle plugin") {
             config = project.extensions.create("gitHubToken", GitHubTokenExtension::class.java)
@@ -29,14 +25,31 @@ class PluginGitHubToken : Plugin<Project> {
                 TutuLog.warning("task: ${task.name}")
                 runStaticWebServer(config.scope) {token ->
                     val secretAES = config.secretAES
-                    val file = project.rootProject.rootDir.resolve("local.properties")
-                    val str = file.readText()
-                    val writeTokenStr = if (secretAES != null) {
-                        Aes.encrypt(token, secretAES.mask256bit)
-                    } else {
-                        token
-                    }
-                    file.writeText(str + "\n${config.getPropertyKey()}=$writeTokenStr")
+                    val propertiesFile =
+                        if (config.saveToHomeDir) {
+                            userHomeGradleProperties()
+                        } else {
+                            project.localProperties()
+                        }
+                    val textFileContent: String =
+                        if (propertiesFile.exists()) {
+                            propertiesFile.readText()
+                        } else {
+                            ""
+                        }
+                    val writeTokenStr: String =
+                        if (secretAES != null) {
+                            Aes.encrypt(token, secretAES.mask256bit)
+                        } else {
+                            token
+                        }
+                    propertiesFile.writeText(
+                        """
+                        $textFileContent
+                        ${config.getPropertyKey()}=$writeTokenStr
+                        
+                        """.trimIndent()
+                    )
                     TutuLog.info("done, github token saved")
                     System.exit(0)
                 }
