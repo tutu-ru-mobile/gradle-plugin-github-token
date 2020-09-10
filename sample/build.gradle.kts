@@ -7,7 +7,7 @@ plugins {
 }
 
 gitHubToken {
-    homeDir.secretAES = "some_secret_key"
+    secretAES = "some_secret_key"
     scope = "read:packages"
 }
 

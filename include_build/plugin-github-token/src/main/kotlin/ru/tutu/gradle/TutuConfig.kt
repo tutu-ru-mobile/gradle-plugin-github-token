@@ -9,7 +9,9 @@ open class GitHubTokenExtension {
     /**
      * Save github token to ~/.gradle/gradle.properties
      */
-    var homeDir: HomeDirConfig = HomeDirConfig()//todo rename homeDir
+    var saveToHomeDir: Boolean = false
+
+    var secretAES: String? = null
 
     /**
      * Scope of GitHub token. Use white space delimiter.
@@ -22,14 +24,6 @@ open class GitHubTokenExtension {
      */
     var id: String = "default"
 
-    class HomeDirConfig(
-        /**
-         * Token's saved on home dir must be encrypted. Specify AES secret.
-         * If not present - token will be saved on local.properties (must be included in .gitignore)
-         */
-        var secretAES: String? = null
-    )
-
     fun getToken(project: Project): String {
         val properties = Properties()
         val propertiesFile = project.rootProject.file("local.properties")
@@ -37,11 +31,11 @@ open class GitHubTokenExtension {
             properties.load(propertiesFile.inputStream())
             val property: String? = properties.getProperty(getPropertyKey())
             if (property != null) {
-                val secretAES = homeDir.secretAES
-                if(secretAES != null) {
-                    return Aes.decrypt(secretAES.mask256bit, property)
+                val secretAES = secretAES
+                return if (secretAES != null) {
+                    Aes.decrypt(secretAES.mask256bit, property)
                 } else {
-                    return property
+                    property
                 }
             } else {
                 return "todo"//todo
@@ -54,7 +48,12 @@ open class GitHubTokenExtension {
     }
 
     fun getPropertyKey(): String {
-        return propertyPrefix + id.capitalize()
+        val postfix: String = if (secretAES != null) {
+            "Base64AES"
+        } else {
+            ""
+        }
+        return propertyPrefix + id.capitalize() + postfix
     }
 
 }

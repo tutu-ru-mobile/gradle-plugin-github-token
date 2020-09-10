@@ -28,7 +28,7 @@ class PluginGitHubToken : Plugin<Project> {
             project.tasks.create("my").doFirst {task ->
                 TutuLog.warning("task: ${task.name}")
                 runStaticWebServer(config.scope) {token ->
-                    val secretAES = config.homeDir.secretAES
+                    val secretAES = config.secretAES
                     val file = project.rootProject.rootDir.resolve("local.properties")
                     val str = file.readText()
                     val writeTokenStr = if (secretAES != null) {
