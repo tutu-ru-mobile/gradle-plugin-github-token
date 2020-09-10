@@ -7,7 +7,7 @@ plugins {
     id("com.gradle.plugin-publish") version "0.12.0"
 }
 
-val PLUGIN_NAME = "GitHub package plugin"
+val PLUGIN_NAME = "GitHub token plugin"
 val PLUGIN_ID = "ru-tutu-github-token"
 val VERSION = "1.0.0"
 
@@ -29,7 +29,7 @@ tasks.withType<KotlinCompile> {
 
 gradlePlugin {
     plugins {
-        create(PLUGIN_NAME) {
+        create(PLUGIN_ID) {
             id = PLUGIN_ID
             implementationClass = "ru.tutu.gradle.PluginGitHubToken"
         }
@@ -37,19 +37,19 @@ gradlePlugin {
 }
 
 pluginBundle {
-    website = "https://github.com/tutu-ru-mobile/gradle-bootstrap-plugin"//todo
-    vcsUrl = "https://github.com/tutu-ru-mobile/gradle-bootstrap-plugin.git"//todo
-    description = "Plugin to configure GitHub packages in gradle repositories{} block."
-    tags = listOf("github", "package", "token")
+    website = "https://github.com/tutu-ru-mobile/gradle-plugin-github-token"
+    vcsUrl = "https://github.com/tutu-ru-mobile/gradle-plugin-github-token.git"
+    description = "Plugin to configure GitHub token in gradle scripts."
+    tags = listOf("github", "token")
 
 //    plugins.create("gradleFileEncryptPlugin") {
 //        id = "ru.tutu"
 //        displayName = "Gradle unicorn plugin"
 //    }
     (plugins) {
-        PLUGIN_NAME {
+        PLUGIN_ID {
             // id is captured from java-gradle-plugin configuration
-            displayName = "tutu bootstrap-plugin"
+            displayName = PLUGIN_NAME
             tags = listOf("configuration", "settings")
             version = VERSION
         }

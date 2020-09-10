@@ -8,6 +8,7 @@ Plugins helps in creation and usage of GitHub token.
 5. You may use token in gradle scripts with function ```gitHubToken.getToken(project)```
 
 ## Usage in build.gradle.kts (Kotlin-DSL)
+Look at sample project [sample-kts](sample-kts).
 ```Kotlin
 plugins {
     id("ru-tutu-github-token") version "1.0.0"
@@ -23,6 +24,7 @@ val token:String = gitHubToken.getToken(project)
 ```
 
 ## Usage in build.gradle (Groovy)
+Look at sample project [sample-groovy](sample-groovy).
 ```Groovy
 plugins {
     id("ru-tutu-github-token") version "1.0.0"
@@ -36,7 +38,6 @@ gitHubToken {
 // Token usage:
 def token = gitHubToken.getToken(project)
 ```
-Look at sample projects [sample-kts|sample-kts] and [sample-groovy|sample-groovy].
 ## Configuration
 ```Kotlin
 gitHubToken {
@@ -70,4 +71,6 @@ gitHubToken {
 }
 ```
 
-## Source code and build
+## Source code:
+Main source code of plugin available at [include_build/plugin-github-token](include_build/plugin-github-token)  
+

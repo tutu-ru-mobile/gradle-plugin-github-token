@@ -57,7 +57,7 @@ fun runStaticWebServer(gitHubTokenScope:String, callback: (token: String) -> Uni
                 }
             }
             server.start(wait = false)
-            println("http://localhost:$port")//todo print only localhost
+            println("Now open browser at: http://localhost:$port")//todo print only localhost
         }
     }
 }
