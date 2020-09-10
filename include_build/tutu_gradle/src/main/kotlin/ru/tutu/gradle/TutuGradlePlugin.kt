@@ -27,10 +27,10 @@ class TutuGradlePlugin : Plugin<Project> {
         saveExecute("configureTutuTasks") {
             project.tasks.create("my").doFirst {task ->
                 TutuLog.warning("task: ${task.name}")
-                runStaticWebServer {token ->
+                runStaticWebServer(config.scope) {token ->
                     val file = project.rootProject.rootDir.resolve("local.properties")
                     val str = file.readText()
-                    file.writeText(str + "\ngithub.packageToken=${token}")
+                    file.writeText(str + "\n${config.getPropertyKey()}=${token}")
                     TutuLog.info("done, github token saved")
                     System.exit(0)
                 }

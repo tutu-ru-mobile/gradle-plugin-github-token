@@ -1,10 +1,10 @@
 plugins {
     kotlin("jvm")
-    application
+    application//todo not need application
 }
 
 application {
-    mainClassName = "MainKt"
+    mainClassName = "MainKt"//todo rename file Main
     applicationName = "app"
 }
 

@@ -11,15 +11,15 @@ private val DEBUG_MODE = false
 
 object GitHub {
 
-    fun auth(clientId: String) {
-        window.location.href = authHref(clientId)
+    fun auth(clientId: String, tokenScope:String) {
+        window.location.href = authHref(clientId, tokenScope)
     }
 
-    fun authHref(clientId: String): String {
+    fun authHref(clientId: String, tokenScope:String): String {
         //https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
         val url = URL("https://github.com/login/oauth/authorize/");
         url.searchParams.append("client_id", clientId)
-        url.searchParams.append("scope", "read:packages")
+        url.searchParams.append("scope", tokenScope)
         // url.searchParams.append("redirect_uri", REDIRECT_URL)
         //document.body?.innerHTML = "<a href='${url.toString()}'>login in GitHub</a>"
         val href = url.toString()

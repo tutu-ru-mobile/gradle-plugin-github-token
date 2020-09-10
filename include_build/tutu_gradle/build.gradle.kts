@@ -7,9 +7,10 @@ plugins {
     id("com.gradle.plugin-publish") version "0.12.0"
 }
 
-val PLUGIN_NAME = "bootstrap-plugin"//todo
+val PLUGIN_NAME = "GitHub package plugin"
 val PLUGIN_ID = "ru-tutu-github-package"
-val VERSION = "0.1.0"//todo
+val VERSION = "1.0.0"
+
 group = "ru.tutu"
 version = VERSION
 
@@ -36,10 +37,10 @@ gradlePlugin {
 }
 
 pluginBundle {
-    website = "https://github.com/tutu-ru-mobile/gradle-bootstrap-plugin"
-    vcsUrl = "https://github.com/tutu-ru-mobile/gradle-bootstrap-plugin.git"
-    description = "Tutu.ru gradle bootstrap-plugin"
-    tags = listOf("configuration", "settings")//some string tags
+    website = "https://github.com/tutu-ru-mobile/gradle-bootstrap-plugin"//todo
+    vcsUrl = "https://github.com/tutu-ru-mobile/gradle-bootstrap-plugin.git"//todo
+    description = "Plugin to configure GitHub packages in gradle repositories{} block."
+    tags = listOf("github", "package", "token")
 
 //    plugins.create("gradleFileEncryptPlugin") {
 //        id = "ru.tutu"

@@ -30,12 +30,12 @@ fun RBuilder.renderAppState(state: AppState, userIntent: (Intent) -> Unit) {
                     }
                 }
                 else -> {
-                    if (state.oAuthTempCode == null) {
+                    if (state.oAuthTempCode == null && state.tokenScope != null) {
                         button {
                             attrs {
                                 +"OAuth with GitHub"
                                 onClickFunction = {
-                                    GitHub.auth(CLIENT_ID)
+                                    GitHub.auth(CLIENT_ID, state.tokenScope)
                                 }
                             }
                         }

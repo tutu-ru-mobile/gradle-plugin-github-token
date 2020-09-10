@@ -14,6 +14,8 @@ fun startWeb() {
     val githubRedirectCode = lib.getHrefParam("code")
     if (githubRedirectCode != null) {
         store.dispatch(Intent.ReceiveTempCode(githubRedirectCode))
+    } else {
+        store.dispatch(Intent.GetScopeFromLocalhost)
     }
     window.history.pushState(dyn {}, document.title, window.location.pathname) // Затираем url search params
     CSSBuilder(allowClasses = false).apply {

@@ -4,18 +4,15 @@ import io.ktor.routing.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import java.io.File
 
-fun main() {
-    runStaticWebServer() {}
+fun main() {//todo delete
+
 }
 
 @OptIn(EngineAPI::class)
-fun runStaticWebServer(callback: (token: String) -> Unit) {
+fun runStaticWebServer(gitHubTokenScope:String, callback: (token: String) -> Unit) {
     val port: Int = 55555
     runBlocking {
         //todo сделать timeout чтобы сборка не зависла на CI/CD
@@ -32,6 +29,9 @@ fun runStaticWebServer(callback: (token: String) -> Unit) {
                 //shareWorkGroup
             }) {
                 routing {
+                    get("scope") {
+                        context.respondText(gitHubTokenScope)
+                    }
                     get("savetoken") {
                         val token: String? = context.parameters["token"]
                         if (token != null) {

@@ -1,4 +1,5 @@
 import java.util.*
+import ru.tutu.gradle.*
 
 plugins {
     id("ru-tutu-github-package") version "1.0.0"
@@ -13,20 +14,12 @@ tutu {
 //    repo("https://maven.pkg.github.com/tutu-ru-mobile/android-core/")
 //}
 
-fun getLocalProp(key: String): String {
-    val properties = Properties()
-    val propertiesFile = project.rootProject.file("local.properties")
-    if (propertiesFile.exists()) {
-        properties.load(propertiesFile.inputStream())
-        val property: String? = properties.getProperty(key)
-        if (property != null) {
-            return property
-        } else {
-            return "todo"//todo
-            throw Error("property $key not exists")
-        }
+fun getVar2(env: String): String {
+    val envVar: String? = System.getenv(env)
+    if (envVar != null) {
+        return@getVar2 envVar
     } else {
-        throw Error("local.properties not exists")
+        return tutu.getToken(project)
     }
 }
 
@@ -36,8 +29,8 @@ repositories {
         setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin/")
         credentials {
             //https://github.com/settings/tokens
-            username = getVar("MAVEN_USER", "github.user")//getVar("MAVEN_USER", "mavenUser")
-            password = getVar("MAVEN_PASSWORD", "github.packageToken")//getVar("MAVEN_PASSWORD", "mavenPassword")
+            username = "github-user"
+            password = getVar2("MAVEN_PASSWORD")
         }
     }
     google()

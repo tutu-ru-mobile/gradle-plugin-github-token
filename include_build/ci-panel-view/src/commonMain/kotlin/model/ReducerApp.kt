@@ -7,6 +7,18 @@ fun ciPanelReducer(
     intent: Intent
 ): Mvi.ReducerResult<AppState, AppSideEffect> =
     when (intent) {
+        is Intent.GetScopeFromLocalhost -> {
+            resultSideEffects(
+                AppSideEffect.GetTokenFromLocalhost
+            )
+        }
+        is Intent.ReceiveScope -> {
+            resultState(
+                state.copy(
+                    tokenScope = intent.scope
+                )
+            )
+        }
         is Intent.ReceiveTempCode -> {
             resultState(
                 state.copy(
