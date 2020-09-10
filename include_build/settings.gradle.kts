@@ -1,4 +1,3 @@
-//include("old-server-localhost")
 include("plugin-github-token")
 include("github")
 include("client")

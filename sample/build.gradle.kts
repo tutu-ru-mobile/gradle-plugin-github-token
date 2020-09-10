@@ -6,29 +6,24 @@ plugins {
     kotlin("jvm") version "1.3.72"
 }
 
-tutu {
-    configVar1 = "sample value"
+gitHubToken {
+    homeDir.secretAES = "some_secret_key"
+    scope = "read:packages"
 }
-
-//tutuGithubPackages {
-//    repo("https://maven.pkg.github.com/tutu-ru-mobile/android-core/")
-//}
 
 fun getVar2(env: String): String {
     val envVar: String? = System.getenv(env)
     if (envVar != null) {
         return@getVar2 envVar
     } else {
-        return tutu.getToken(project)
+        return gitHubToken.getToken(project)
     }
 }
 
 repositories {
     maven {
-//        setUrl("https://maven.pkg.github.com/tutu-ru-mobile/android-core/")
-        setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin/")
+        setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin/")//todo uri
         credentials {
-            //https://github.com/settings/tokens
             username = "github-user"
             password = getVar2("MAVEN_PASSWORD")
         }

@@ -31,7 +31,7 @@ gradlePlugin {
     plugins {
         create(PLUGIN_NAME) {
             id = PLUGIN_ID
-            implementationClass = "ru.tutu.gradle.TutuGradlePlugin"
+            implementationClass = "ru.tutu.gradle.PluginGitHubToken"
         }
     }
 }
@@ -63,7 +63,6 @@ dependencies {
     implementation("org.eclipse.jgit", "org.eclipse.jgit", "5.4.0.201906121030-r")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION")
 //    implementation(kotlin("stdlib-jdk8", "1.3.70"))//todo delete
-//    implementation(project(":old-server-localhost"))//todo delete
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
     testImplementation("org.slf4j:slf4j-jdk14:1.7.25")
     testImplementation("junit:junit:4.12")
