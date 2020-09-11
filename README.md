@@ -63,7 +63,7 @@ gitHubToken {
     /**
      * You may specify custom *.properties file location
      */
-    fun storeTokenAtCustonLocation(file: File): Unit
+    fun storeTokenAtCustomLocation(file: File): Unit
 
     /**
      * AES secret key (256-bit maximum size)

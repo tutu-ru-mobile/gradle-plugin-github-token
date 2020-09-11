@@ -37,7 +37,7 @@ open class GitHubTokenExtension {
     /**
      * You may specify custom *.properties file location
      */
-    fun storeTokenAtCustonLocation(file: File) {
+    fun storeTokenAtCustomLocation(file: File) {
         tokenLocation = TokenLocation.CustomLocation(file)
     }
 
