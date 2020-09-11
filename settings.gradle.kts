@@ -1,5 +1,5 @@
 
-rootProject.name = "tutu-gradle-bootstrap"
+rootProject.name = "ru.tutu.github.token"
 includeBuild("include_build") {
     dependencySubstitution {
         substitute(module("ru.tutu:plugin-github-token:1.0.0")).with(project(":plugin-github-token"))
