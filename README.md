@@ -1,4 +1,4 @@
-# gradle plugin ru-tutu-github-token
+# Gradle plugin `ru-tutu-github-token`
 
 Plugins helps in creation and usage of GitHub token.
 By default token will be saved to ```local.properties``` (also please add to .gitignore)
