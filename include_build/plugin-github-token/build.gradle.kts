@@ -9,7 +9,7 @@ plugins {
 
 val PLUGIN_NAME = "GitHub token plugin"
 val PLUGIN_ID = "ru.tutu.github.token"
-val VERSION = "1.0.0"
+val VERSION = "1.0.1"
 val TAGS = listOf("github", "token")
 
 group = "ru.tutu"
@@ -17,7 +17,7 @@ version = VERSION
 
 repositories {
     jcenter()
-    maven { setUrl("https://dl.bintray.com/kotlin/ktor") }//todo remove?
+//    maven { setUrl("https://dl.bintray.com/kotlin/ktor") }//todo remove?
 }
 
 configure<JavaPluginConvention> {//todo redundant?
@@ -58,9 +58,15 @@ pluginBundle {
 }
 
 dependencies {
-    implementation(project(":local-server"))
-
     compileOnly(gradleApi())
+
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("io.ktor:ktor-server-netty:$KTOR_VERSION")
+    implementation("io.ktor:ktor-server-cio:$KTOR_VERSION")
+    implementation("io.ktor:ktor-client-core:$KTOR_VERSION")
+    implementation("io.ktor:ktor-client-apache:$KTOR_VERSION")
+    implementation("io.ktor:ktor-html-builder:$KTOR_VERSION")
+
     implementation("org.eclipse.jgit", "org.eclipse.jgit", "5.4.0.201906121030-r")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION")
 //    implementation(kotlin("stdlib-jdk8", "1.3.70"))//todo delete

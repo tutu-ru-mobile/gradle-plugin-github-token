@@ -13,7 +13,7 @@ By default token will be saved to ```local.properties``` (also please add to .gi
 Look at sample project [sample-kts](sample-kts).
 ```Kotlin
 plugins {
-    id("ru.tutu.github.token") version "1.0.0"
+    id("ru.tutu.github.token") version "1.0.1"
 }
 // Configuration:
 gitHubToken {
@@ -28,7 +28,7 @@ val token:String = gitHubToken.getToken(project)
 Look at sample project [sample-groovy](sample-groovy).
 ```Groovy
 plugins {
-    id("ru.tutu.github.token") version "1.0.0"
+    id("ru.tutu.github.token") version "1.0.1"
 }
 //Configuration:
 gitHubToken {

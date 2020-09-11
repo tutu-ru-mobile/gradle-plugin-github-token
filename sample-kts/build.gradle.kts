@@ -1,5 +1,5 @@
 plugins {
-    id("ru.tutu.github.token") version "1.0.0"
+    id("ru.tutu.github.token") version "1.0.1"
     kotlin("jvm") version "1.3.72"
 }
 
@@ -10,7 +10,7 @@ gitHubToken {
 
 repositories {
     maven {
-        setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-bootstrap-plugin/")//todo uri
+        setUrl("https://maven.pkg.github.com/tutu-ru-mobile/gradle-plugin-github-token/")//todo uri
         credentials {
             username = "github-user"
             password = gitHubToken.getToken(project)
