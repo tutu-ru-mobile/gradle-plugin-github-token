@@ -23,7 +23,7 @@ pluginManagement {
         eachPlugin {
             when (requested.id.id) {
 //                "tutu-gradle" -> useModule("ru.tutu:plugin-github-token:1.0.0")
-                "ru-tutu-github-token" -> useModule("ru.tutu:plugin-github-token:1.0.0")
+                "ru.tutu.github.token" -> useModule("ru.tutu:plugin-github-token:1.0.0")
 ////        "kotlinx-serialization" -> useModule("org.jetbrains.kotlin:kotlin-serialization:${requested.version}")
 ////        "org.jetbrains.kotlin.multiplatform" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${target.version}")
             }
