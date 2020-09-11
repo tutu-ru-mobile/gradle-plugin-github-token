@@ -9,7 +9,7 @@ plugins {
 
 val PLUGIN_NAME = "GitHub token plugin"
 val PLUGIN_ID = "ru.tutu.github.token"
-val VERSION = "1.0.1"
+val VERSION = "1.0.2"
 val TAGS = listOf("github", "token")
 
 group = "ru.tutu"
@@ -74,4 +74,17 @@ dependencies {
     testImplementation("org.slf4j:slf4j-jdk14:1.7.25")
     testImplementation("junit:junit:4.12")
     testImplementation(gradleTestKit())
+}
+
+tasks {
+    getByName("processResources") {
+        dependsOn(":client:webBuildProduction")
+    }
+}
+sourceSets {
+    main {
+        resources {
+            srcDirs("src/main/resources", "../client/build/distributions")
+        }
+    }
 }
