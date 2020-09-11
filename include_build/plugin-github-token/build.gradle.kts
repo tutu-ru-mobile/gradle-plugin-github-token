@@ -10,6 +10,7 @@ plugins {
 val PLUGIN_NAME = "GitHub token plugin"
 val PLUGIN_ID = "ru-tutu-github-token"
 val VERSION = "1.0.0"
+val TAGS = listOf("github", "token")
 
 group = "ru.tutu"
 version = VERSION
@@ -40,7 +41,7 @@ pluginBundle {
     website = "https://github.com/tutu-ru-mobile/gradle-plugin-github-token"
     vcsUrl = "https://github.com/tutu-ru-mobile/gradle-plugin-github-token.git"
     description = "Plugin to configure GitHub token in gradle scripts."
-    tags = listOf("github", "token")
+    tags = TAGS
 
 //    plugins.create("gradleFileEncryptPlugin") {
 //        id = "ru.tutu"
@@ -50,7 +51,7 @@ pluginBundle {
         PLUGIN_ID {
             // id is captured from java-gradle-plugin configuration
             displayName = PLUGIN_NAME
-            tags = listOf("configuration", "settings")
+            tags = TAGS
             version = VERSION
         }
     }
