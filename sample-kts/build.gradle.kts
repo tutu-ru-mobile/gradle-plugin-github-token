@@ -1,5 +1,5 @@
 plugins {
-    id("ru.tutu.github.token") version "1.0.2"
+    id("ru.tutu.github.token") version "1.0.3"
     kotlin("jvm") version "1.3.72"
 }
 

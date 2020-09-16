@@ -2,7 +2,6 @@ package ru.tutu.gradle
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import ru.tutu.log.PrintLogs
 import ru.tutu.log.TutuLog
 import runStaticWebServer
 
