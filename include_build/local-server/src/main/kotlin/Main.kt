@@ -8,7 +8,10 @@ import kotlinx.coroutines.*
 import java.io.File
 
 fun main() {//todo delete
-
+    runStaticWebServer("github-user") {
+        println("DONE")
+        System.exit(0)
+    }
 }
 
 @OptIn(EngineAPI::class)
