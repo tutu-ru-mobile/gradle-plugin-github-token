@@ -17,7 +17,7 @@ val store = Mvi.store<AppState, Intent, AppSideEffect>(
             is AppSideEffect.ReloadPage -> {
                 window.location.reload()
             }
-            is AppSideEffect.GetTokenFromLocalhost -> {
+            is AppSideEffect.GetScopeFromLocalhost -> {
                 val response = requestStr(
                     "http://localhost:55555/scope",//todo simplify
                     mapOf(),

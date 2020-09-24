@@ -9,7 +9,7 @@ fun ciPanelReducer(
     when (intent) {
         is Intent.GetScopeFromLocalhost -> {
             resultSideEffects(
-                AppSideEffect.GetTokenFromLocalhost
+                AppSideEffect.GetScopeFromLocalhost
             )
         }
         is Intent.ReceiveScope -> {

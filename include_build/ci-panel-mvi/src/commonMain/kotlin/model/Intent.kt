@@ -12,7 +12,7 @@ sealed class Intent {
 
 sealed class AppSideEffect {
     object ReloadPage : AppSideEffect()
-    object GetTokenFromLocalhost : AppSideEffect()
+    object GetScopeFromLocalhost : AppSideEffect()
     class LoadToken(val tempCode: String) : AppSideEffect()
     class SaveTokenToLocalhost(val token: String) : AppSideEffect()
 }
