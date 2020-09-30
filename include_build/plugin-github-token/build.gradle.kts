@@ -9,7 +9,7 @@ plugins {
 
 val PLUGIN_NAME = "GitHub token plugin"
 val PLUGIN_ID = "ru.tutu.github.token"
-val VERSION = "1.0.4"
+val VERSION = "1.0.5"
 val TAGS = listOf("github", "token")
 
 group = "ru.tutu"
@@ -60,7 +60,7 @@ pluginBundle {
 dependencies {
     compileOnly(gradleApi())
 
-    implementation(project(":aes"))
+//    implementation(project(":aes"))
     implementation("ch.qos.logback:logback-classic:1.2.3")
     implementation("io.ktor:ktor-server-netty:$KTOR_VERSION")
     implementation("io.ktor:ktor-server-cio:$KTOR_VERSION")
