@@ -9,7 +9,7 @@ plugins {
 
 val PLUGIN_NAME = "GitHub token plugin"
 val PLUGIN_ID = "ru.tutu.github.token"
-val VERSION = "1.0.3"
+val VERSION = "1.0.4"
 val TAGS = listOf("github", "token")
 
 group = "ru.tutu"
@@ -60,6 +60,7 @@ pluginBundle {
 dependencies {
     compileOnly(gradleApi())
 
+    implementation(project(":aes"))
     implementation("ch.qos.logback:logback-classic:1.2.3")
     implementation("io.ktor:ktor-server-netty:$KTOR_VERSION")
     implementation("io.ktor:ktor-server-cio:$KTOR_VERSION")
@@ -69,7 +70,6 @@ dependencies {
 
     implementation("org.eclipse.jgit", "org.eclipse.jgit", "5.4.0.201906121030-r")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION")
-//    implementation(kotlin("stdlib-jdk8", "1.3.70"))//todo delete
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
     testImplementation("org.slf4j:slf4j-jdk14:1.7.25")
     testImplementation("junit:junit:4.12")

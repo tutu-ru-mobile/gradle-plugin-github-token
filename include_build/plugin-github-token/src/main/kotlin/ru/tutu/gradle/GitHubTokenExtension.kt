@@ -65,7 +65,7 @@ open class GitHubTokenExtension {
             if (property != null) {
                 val secretAES = secretAES
                 return if (secretAES != null) {
-                    Aes.decrypt(secretAES.mask256bit, property)
+                    AesWrapper.decrypt(secretAES, property)
                 } else {
                     property
                 }

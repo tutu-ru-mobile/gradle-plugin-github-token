@@ -33,7 +33,7 @@ class PluginGitHubToken : Plugin<Project> {
                         }
                     val writeTokenStr: String =
                         if (secretAES != null) {
-                            Aes.encrypt(token, secretAES.mask256bit)
+                            AesWrapper.encrypt(token, secretAES)
                         } else {
                             token
                         }
