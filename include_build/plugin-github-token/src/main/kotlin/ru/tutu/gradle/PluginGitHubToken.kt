@@ -3,7 +3,7 @@ package ru.tutu.gradle
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import ru.tutu.log.TutuLog
-import runStaticWebServer
+import getGithubToken
 
 class PluginGitHubToken : Plugin<Project> {
 
@@ -21,34 +21,33 @@ class PluginGitHubToken : Plugin<Project> {
     fun afterEvaluate(project: Project) {
         saveExecute("configureTutuTasks") {
             project.tasks.create("createToken").doFirst {task ->
-                TutuLog.warning("task: ${task.name}")
-                runStaticWebServer(config.scope) {token ->
-                    val secretAES = config.secretAES
-                    val propertiesFile = config.tokenLocation.getPropertiesFile(project)
-                    val textFileContent: String =
-                        if (propertiesFile.exists()) {
-                            propertiesFile.readText()
-                        } else {
-                            ""
-                        }
-                    val writeTokenStr: String =
-                        if (secretAES != null) {
-                            AesWrapper.encrypt(token, secretAES)
-                        } else {
-                            token
-                        }
+//                TutuLog.warning("task: ${task.name}")
+                val token = getGithubToken(config.scope)
 
-                    if(!propertiesFile.parentFile.exists()) {
-                        propertiesFile.parentFile.mkdirs()
+                val secretAES = config.secretAES
+                val propertiesFile = config.tokenLocation.getPropertiesFile(project)
+                val textFileContent: String =
+                    if (propertiesFile.exists()) {
+                        propertiesFile.readText()
+                    } else {
+                        ""
                     }
-                    propertiesFile.writeText(
-                        textFileContent + "\n" +
-                                "${config.getPropertyKey()}=$writeTokenStr" +
-                                "\n"
-                    )
-                    TutuLog.info("done, github token saved")
-                    System.exit(0)
+                val writeTokenStr: String =
+                    if (secretAES != null) {
+                        AesWrapper.encrypt(token, secretAES)
+                    } else {
+                        token
+                    }
+
+                if(!propertiesFile.parentFile.exists()) {
+                    propertiesFile.parentFile.mkdirs()
                 }
+                propertiesFile.writeText(
+                    textFileContent + "\n" +
+                            "${config.getPropertyKey()}=$writeTokenStr" +
+                            "\n"
+                )
+                TutuLog.info("done, github token saved")
             }
         }
     }

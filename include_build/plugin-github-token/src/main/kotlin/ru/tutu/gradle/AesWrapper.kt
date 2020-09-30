@@ -15,8 +15,12 @@ object AesWrapper {
     }
 
     fun decrypt(secretKey: String, strToDecrypt: String): String {
-        val decrypt = aes.decrypt(strToDecrypt.fromBase64(), AesStringSecret(secretKey))
-        return String(decrypt)
+        try {
+            val decrypt = aes.decrypt(strToDecrypt.fromBase64(), AesStringSecret(secretKey))
+            return String(decrypt)
+        } catch (t: Throwable) {
+            return "decrypt fail with exception"
+        }
     }
 
 }
