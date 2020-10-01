@@ -72,7 +72,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
     testImplementation("org.slf4j:slf4j-jdk14:1.7.25")
-    testImplementation("junit:junit:4.12")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation(gradleTestKit())
 }
 

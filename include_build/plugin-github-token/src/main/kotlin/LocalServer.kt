@@ -5,6 +5,7 @@ import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import kotlinx.coroutines.*
+import ru.tutu.gradle.KotlinSwingStandardColoursEx
 import java.io.File
 
 fun main() {//todo delete
@@ -58,7 +59,12 @@ fun getGithubToken(gitHubTokenScope: String): String {
                     }
                 }
                 server.start(wait = false)
-                println("Now open browser at: http://localhost:$port")//todo print only localhost
+                val message = "Now open browser at: http://localhost:$port"
+                println(message)//todo print only localhost
+
+                val frame = KotlinSwingStandardColoursEx(message)
+                frame.isVisible = true
+
             }
         }
         return@runBlocking token
