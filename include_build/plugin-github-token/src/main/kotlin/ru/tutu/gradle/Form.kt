@@ -1,70 +1,70 @@
 package ru.tutu.gradle
 
-import java.awt.Color
 import java.awt.Dimension
-import java.awt.EventQueue
+import java.awt.event.WindowEvent
 import javax.swing.GroupLayout
 import javax.swing.JFrame
 import javax.swing.JLabel
+import javax.swing.JTextField
 import javax.swing.SwingConstants.LEADING
 
+interface Form {
+    fun close()
+}
 
-class KotlinSwingStandardColoursEx(title: String) : JFrame() {
+fun openFrameWithCopyText(title: String, label: String, text: String): Form {
+    val frame = FrameWithCopyMessage(title, label, text)
+    frame.isVisible = true
+    return object : Form {
+        override fun close() {
+            frame.dispatchEvent(WindowEvent(frame, WindowEvent.WINDOW_CLOSING))
+        }
+    }
+}
+
+class FrameWithCopyMessage(title: String, label: String, text: String) : JFrame() {
 
     init {
-        createUI(title)
-    }
-
-    private fun createUI(message: String) {
-
-        createLayout(
-            JLabel(message, null, LEADING).apply {
-                minimumSize = Dimension(90, 40)
-                isOpaque = true
-            }
-
-        )
-
-        setTitle("auth")
-        defaultCloseOperation = JFrame.EXIT_ON_CLOSE
-        setLocationRelativeTo(null)
-    }
-
-    private fun createLayout(label: JLabel) {
+        setTitle(title)
+        val jLabel = JLabel(label, null, LEADING).apply {
+            minimumSize = Dimension(90, 40)
+            isOpaque = true
+        }
+        val jText = JTextField(text)
 
         val gl = GroupLayout(contentPane)
         contentPane.layout = gl
-
         gl.autoCreateContainerGaps = true
         gl.autoCreateGaps = true
-
-
         gl.setHorizontalGroup(
             gl.createParallelGroup()
                 .addGroup(
                     gl.createSequentialGroup()
-                        .addComponent(label)
+                        .addComponent(jLabel)
+                )
+                .addGroup(
+                    gl.createSequentialGroup()
+                        .addComponent(jText)
                 )
         )
-
         gl.setVerticalGroup(
             gl.createSequentialGroup()
                 .addGroup(
                     gl.createParallelGroup()
-                        .addComponent(label)
+                        .addComponent(jLabel)
+                )
+                .addGroup(
+                    gl.createParallelGroup()
+                        .addComponent(jText)
                 )
         )
-
         pack()
+//        defaultCloseOperation = EXIT_ON_CLOSE
+        setLocationRelativeTo(null)
     }
-}
 
-private fun createAndShowGUI() {
-
-    val frame = KotlinSwingStandardColoursEx("Standard colours")
-    frame.isVisible = true
 }
 
 fun main() {
-    EventQueue.invokeLater(::createAndShowGUI)
+    openFrameWithCopyText("title", "label", "text")
 }

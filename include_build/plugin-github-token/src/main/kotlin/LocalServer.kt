@@ -5,7 +5,8 @@ import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import kotlinx.coroutines.*
-import ru.tutu.gradle.KotlinSwingStandardColoursEx
+import ru.tutu.gradle.Form
+import ru.tutu.gradle.openFrameWithCopyText
 import java.io.File
 
 fun main() {//todo delete
@@ -16,6 +17,7 @@ fun main() {//todo delete
 fun getGithubToken(gitHubTokenScope: String): String {
     val port: Int = 55555
     return runBlocking {
+        var infoForm: Form? = null
         val token = suspendCancellableCoroutine<String> { continuation ->
             GlobalScope.launch {
                 var server: BaseApplicationEngine? = null
@@ -59,14 +61,16 @@ fun getGithubToken(gitHubTokenScope: String): String {
                     }
                 }
                 server.start(wait = false)
-                val message = "Now open browser at: http://localhost:$port"
+                val urlText = "http://localhost:$port"
+                val urlDescription = "Now open browser at:"
+                val message = "$urlDescription $urlText"
                 println(message)//todo print only localhost
 
-                val frame = KotlinSwingStandardColoursEx(message)
-                frame.isVisible = true
+                infoForm = openFrameWithCopyText("auth", "$urlDescription ", urlText)
 
             }
         }
+        infoForm?.close()
         return@runBlocking token
     }
 }
