@@ -2,22 +2,24 @@ package ru.tutu.gradle
 
 import java.awt.Dimension
 import java.awt.event.WindowEvent
-import javax.swing.GroupLayout
-import javax.swing.JFrame
-import javax.swing.JLabel
-import javax.swing.JTextField
+import javax.swing.*
 import javax.swing.SwingConstants.LEADING
+
 
 interface Form {
     fun close()
 }
 
 fun openFrameWithCopyText(title: String, label: String, text: String): Form {
-    val frame = FrameWithCopyMessage(title, label, text)
-    frame.isVisible = true
+    System.setProperty("java.awt.headless", "false")
+    var frame: JFrame? = null
+    SwingUtilities.invokeLater {
+        frame = FrameWithCopyMessage(title, label, text)
+        frame?.isVisible = true
+    }
     return object : Form {
         override fun close() {
-            frame.dispatchEvent(WindowEvent(frame, WindowEvent.WINDOW_CLOSING))
+            frame?.dispatchEvent(WindowEvent(frame, WindowEvent.WINDOW_CLOSING))
         }
     }
 }
