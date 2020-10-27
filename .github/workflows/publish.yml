@@ -39,3 +39,4 @@ jobs:
           cd include_build
           ./gradlew plugin-github-token:publishPlugins -Pgradle.publish.key=${{ secrets.PUBLISH_KEY }} -Pgradle.publish.secret=${{ secrets.PUBLISH_SECRET }}
 
+
