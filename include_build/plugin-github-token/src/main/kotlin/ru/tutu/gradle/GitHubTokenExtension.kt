@@ -70,11 +70,11 @@ open class GitHubTokenExtension {
                     property
                 }
             } else {
-                TutuLog.error("property key ${getPropertyKey()} not exists")
+                TutuLog.error("property key ${getPropertyKey()} not exists. Please use ./gradlew createToken")
                 return "error"
             }
         } else {
-            TutuLog.error("properties file (${propertiesFile.path}) not exists")
+            TutuLog.error("properties file (${propertiesFile.path}) not exists. Please use ./gradlew createToken")
             return "error"
         }
     }
