@@ -19,7 +19,7 @@ val store = Mvi.store<AppState, Intent, AppSideEffect>(
             }
             is AppSideEffect.GetScopeFromLocalhost -> {
                 val response = requestStr(
-                    "http://localhost:55555/scope",//todo simplify
+                    "http://localhost:4321/scope",//todo simplify
                     mapOf(),
                     method = Method.GET
                 )
@@ -45,7 +45,7 @@ val store = Mvi.store<AppState, Intent, AppSideEffect>(
             }
             is AppSideEffect.SaveTokenToLocalhost -> {
                 val response = requestStr(
-                    "http://localhost:55555/savetoken",//todo simplify
+                    "http://localhost:4321/savetoken",//todo simplify
                     mapOf("token" to effect.token),
                     method = Method.GET
                 )

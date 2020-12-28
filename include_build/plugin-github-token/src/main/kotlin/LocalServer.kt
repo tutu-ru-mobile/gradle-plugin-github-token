@@ -15,7 +15,7 @@ fun main() {//todo delete
 
 @OptIn(EngineAPI::class)
 fun getGithubToken(gitHubTokenScope: String): String {
-    val port: Int = 55555
+    val port: Int = 4321
     return runBlocking {
         var infoForm: Form? = null
         val token = suspendCancellableCoroutine<String> { continuation ->
