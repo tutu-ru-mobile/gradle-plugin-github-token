@@ -15,10 +15,10 @@ fun Int.toByteArray4(): ByteArray =
  * Input ByteArray with size == 4
  */
 fun ByteArray.byteArray4toInt(): Int =
-    (get(0).toInt() shl 0) +
-            (get(1).toInt() shl 8) +
-            (get(2).toInt() shl 16) +
-            (get(3).toInt() shl 24)
+    (get(0).toUByte().toInt() shl 0) +
+            (get(1).toUByte().toInt() shl 8) +
+            (get(2).toUByte().toInt() shl 16) +
+            (get(3).toUByte().toInt() shl 24)
 
 fun ByteArray.splitBy16ByteBlock(): List<ByteArray> {
     return sequence {
