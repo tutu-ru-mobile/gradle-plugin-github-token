@@ -104,14 +104,14 @@ Also need config file create-token-cli.json.
 ```Json
 {
   "scope": "read:packages",
-  "secretAES": "some_secret_key", // or null, if not need AES encyption (with carefull!)
-  "tokenLocation": { // possible variant 1
+  "secretAES": "some_secret_key", # or null, if not need AES encyption (with carefull!)
+  "tokenLocation": { # possible variant 1
     "type": "ru.tutu.token.config.SerializableTokenLocation.LocalProperties"
   },
-  "tokenLocation": { // possible variant 2
+  "tokenLocation": { # possible variant 2
     "type": "ru.tutu.token.config.SerializableTokenLocation.HomeGradleProperties"
   },
-  "tokenLocation": { // possible variant 3
+  "tokenLocation": { # possible variant 3
     "type": "ru.tutu.token.config.SerializableTokenLocation.CustomLocation",
     "filePath": "/tmp/gradle.properties"
   },
