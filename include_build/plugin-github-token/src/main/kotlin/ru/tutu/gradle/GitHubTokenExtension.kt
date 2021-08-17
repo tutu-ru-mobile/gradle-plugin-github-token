@@ -56,6 +56,16 @@ open class GitHubTokenExtension {
      */
     var id: String = "default"
 
+    /**
+     * If you use create-token-cli.sh, you may want do stop gradle, before token not generated
+     */
+    var exceptionOnMissingToken:Boolean = false
+
+    /**
+     * Message if exception on missing token occurs
+     */
+    var missingTokenMessage:String = "missing github token"
+
     fun getToken(project: Project): String {
         val propertiesFile = tokenLocation.getPropertiesFile(project)
         val properties = Properties()
@@ -70,11 +80,15 @@ open class GitHubTokenExtension {
                     property
                 }
             } else {
-                TutuLog.error("property key ${getPropertyKey()} not exists. Please use ./gradlew createToken")
+                val internalMessage = "property key ${getPropertyKey()} not exists. Please use ./gradlew createToken"
+                TutuLog.error(internalMessage)
+                maybeThowException()
                 return "error"
             }
         } else {
-            TutuLog.error("properties file (${propertiesFile.path}) not exists. Please use ./gradlew createToken")
+            val message = "properties file (${propertiesFile.path}) not exists. Please use ./gradlew createToken"
+            TutuLog.error(message)
+            maybeThowException()
             return "error"
         }
     }
@@ -86,6 +100,12 @@ open class GitHubTokenExtension {
             ""
         }
         return propertyPrefix + id.capitalize() + postfix
+    }
+
+    fun maybeThowException() {
+        if (exceptionOnMissingToken) {
+            throw RuntimeException(missingTokenMessage)
+        }
     }
 
 }

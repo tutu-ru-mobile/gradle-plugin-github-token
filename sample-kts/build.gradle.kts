@@ -6,6 +6,8 @@ plugins {
 gitHubToken {
     secretAES = "some_secret_key"
     scope = "read:packages"
+    exceptionOnMissingToken = true
+    missingTokenMessage = "!!! YOU NEED TO CREATE TOKEN in terminal: ./create-token-cli.sh"
 }
 
 repositories {

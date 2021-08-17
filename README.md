@@ -79,6 +79,16 @@ gitHubToken {
      * id to configure multiple github token's in different projects
      */
     var id: String = "default"
+
+    /**
+     * If you use create-token-cli.sh, you may want do stop gradle, before token not generated
+     */
+    var exceptionOnMissingToken:Boolean = false
+  
+    /**
+     * Message if exception on missing token occurs
+     */
+    var missingTokenMessage:String = "missing github token"
 }
 ```
 
