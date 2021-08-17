@@ -3,7 +3,7 @@
 Plugins helps in creation and usage of GitHub token.
 By default token will be saved to ```local.properties``` (also please add to .gitignore)
 
-1. Use task ```./gradlew createToken``` to request GitHub token.
+1. Use task ```./gradlew createToken``` to request GitHub token. (Also you may use CLI tool ./create-token.sh with jar and json config)
 2. Task will print ```http://localhost:4321```. Navigate to this url in your browser.
 3. Approve GitHub token request in browser.
 4. Done, your token saved for future usage. (Also you may optionally encrypt token)
@@ -83,5 +83,10 @@ gitHubToken {
 ```
 
 ## Source code:
-Main source code of plugin available at [include_build/plugin-github-token](include_build/plugin-github-token)  
+Main source code of plugin available at [include_build/plugin-github-token](include_build/plugin-github-token)
+  Gradle plugin may me used with old gradle wrapper versions, and contains only Kotlin 1.3.72 to be compatible
 
+## Build cli jar
+`./build-jar-cli.sh`
+  Pay attention to `export BUILD_JAR_CLI=true`, it needs to compile with Kotlin 1.5.21. 
+  Dynamically switch kotlin version.

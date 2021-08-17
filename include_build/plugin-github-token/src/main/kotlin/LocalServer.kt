@@ -1,7 +1,6 @@
 import io.ktor.http.content.*
 import io.ktor.response.*
 import io.ktor.routing.*
-import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import kotlinx.coroutines.*
@@ -9,19 +8,15 @@ import ru.tutu.gradle.Form
 import ru.tutu.gradle.openFrameWithCopyText
 import java.io.File
 
-fun main() {//todo delete
-
-}
-
 @OptIn(EngineAPI::class)
-fun getGithubToken(gitHubTokenScope: String): String {
+fun getGithubToken(gitHubTokenScope: String, showInfoForm:Boolean = true): String {
     val port: Int = 4321
     return runBlocking {
         var infoForm: Form? = null
+        var server: BaseApplicationEngine? = null
         val token = suspendCancellableCoroutine<String> { continuation ->
             GlobalScope.launch {
-                var server: BaseApplicationEngine? = null
-                server = embeddedServer(if (true) Netty else CIO, port, configure = {
+                server = embeddedServer(Netty, port, configure = {
                     //конфигурация может быть специфичная для Netty или CIO
                     connectionGroupSize
                     workerGroupSize
@@ -60,17 +55,20 @@ fun getGithubToken(gitHubTokenScope: String): String {
                         }
                     }
                 }
-                server.start(wait = false)
+                server?.start(wait = false)
                 val urlText = "http://localhost:$port"
                 val urlDescription = "Now open browser at:"
                 val message = "$urlDescription $urlText"
                 println(message)//todo print only localhost
 
-                infoForm = openFrameWithCopyText("auth", "$urlDescription ", urlText)
+                if(showInfoForm) {
+                    infoForm = openFrameWithCopyText("auth", "$urlDescription ", urlText)
+                }
 
             }
         }
         infoForm?.close()
+        server?.stop(0, 0)
         return@runBlocking token
     }
 }

@@ -122,7 +122,7 @@ internal fun TokenLocation.getPropertiesFile(project: Project): File =
         }
     }
 
-internal fun userHomeGradleProperties(): File =
+fun userHomeGradleProperties(): File =
     File(System.getProperty("user.home"))
         .resolve(".gradle")
         .resolve("gradle.properties")
