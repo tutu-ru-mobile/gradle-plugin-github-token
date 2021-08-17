@@ -101,7 +101,7 @@ Main source code of plugin available at [include_build/plugin-github-token](incl
 You may use `create-token-cli.sh` to create token.
 Also need config file create-token-cli.json.
 
-```Json
+```Yaml
 {
   "scope": "read:packages",
   "secretAES": "some_secret_key", # or null, if not need AES encyption (with carefull!)
