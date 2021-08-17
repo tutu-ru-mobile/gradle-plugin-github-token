@@ -2,9 +2,7 @@
 name: Java CI with Gradle
 
 on:
-  push:
-    branches: [ master ]
-    paths: ".github/workflows/publish.yml"
+  workflow_dispatch:
 
 jobs:
   build:
