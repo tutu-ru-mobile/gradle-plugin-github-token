@@ -7,7 +7,7 @@ import ru.tutu.token.config.*
 import java.io.File
 
 fun main(args:Array<String>) {
-  val fileName = args.firstOrNull() ?: "create-token.json"
+  val fileName = args.firstOrNull() ?: "create-token-cli.json"
   println("create token")
   println("read file $fileName:")
   val configText = File(fileName).readText()

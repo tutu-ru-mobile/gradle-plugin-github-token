@@ -10,7 +10,7 @@ interface Form {
     fun close()
 }
 
-fun openFrameWithCopyText(title: String, label: String, text: String): Form {
+inline fun openFrameWithCopyText(title: String, label: String, text: String): Form {
     System.setProperty("java.awt.headless", "false")
     var frame: JFrame? = null
     SwingUtilities.invokeLater {

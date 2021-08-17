@@ -1,9 +1,10 @@
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
     application
-    id("com.github.johnrengelman.shadow") version "6.1.0"
+//    id("com.github.johnrengelman.shadow") version "6.1.0" //shadow have big size of jar
     kotlin("plugin.serialization") version KOTLIN_VERSION
 }
 
@@ -18,6 +19,14 @@ application {
     mainClassName = "ru.tutu.token.JarStarterKt"
     applicationName = "app"
 }
+
+//val shadowJar: com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar by tasks
+//shadowJar.apply {
+//    dependencies {
+//        exclude(dependency(dependencies.gradleApi()))
+//        exclude(dependency(files("gradle-api-6.7.jar")))
+//    }
+//}
 
 configure<JavaPluginConvention> {//todo redundant?
     sourceCompatibility = JavaVersion.VERSION_1_8

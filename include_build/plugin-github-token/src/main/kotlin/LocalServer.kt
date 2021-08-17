@@ -9,7 +9,7 @@ import ru.tutu.gradle.openFrameWithCopyText
 import java.io.File
 
 @OptIn(EngineAPI::class)
-fun getGithubToken(gitHubTokenScope: String, showInfoForm:Boolean = true): String {
+inline fun getGithubToken(gitHubTokenScope: String, showInfoForm:Boolean = true): String {
     val port: Int = 4321
     return runBlocking {
         var infoForm: Form? = null

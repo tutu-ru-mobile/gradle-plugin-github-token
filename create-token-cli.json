@@ -1,0 +1,9 @@
+{
+  "scope": "read:packages",
+  "secretAES": "some_secret_key",
+  "tokenLocation": {
+    "type": "ru.tutu.token.config.SerializableTokenLocation.LocalProperties"
+  },
+  "id": "default",
+  "propertyPrefix": "github.token"
+}
