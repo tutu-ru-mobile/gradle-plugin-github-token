@@ -124,3 +124,8 @@ Also need config file create-token-cli.json.
 `./build-jar-cli.sh`
   Pay attention to `export BUILD_JAR_CLI=true`, it needs to compile with Kotlin 1.5.21. 
   Dynamically switch kotlin version.
+
+## Publish plugin for tutu-ru-mobile contributors
+Go to Actions -> Workflow **publish** -> **Run workflow** (on master branch)
+<img width="1221" alt="image" src="https://user-images.githubusercontent.com/57489371/152252767-bc484fff-d9e0-48ef-80ef-056d4eead0dc.png">  
+PUBLISH_KEY and PUBLISH_SECRET stored in GitHub Actions Secrets https://github.com/tutu-ru-mobile/gradle-plugin-github-token/settings/secrets/actions  
