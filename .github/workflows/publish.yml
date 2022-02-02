@@ -1,6 +1,5 @@
 
-name: Java CI with Gradle
-
+name: publish
 on:
   workflow_dispatch:
 
