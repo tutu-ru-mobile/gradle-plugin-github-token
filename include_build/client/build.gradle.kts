@@ -18,7 +18,7 @@ dependencies {
     implementation(kotlin("stdlib-js"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$COROUTINES_VERSION")
     implementation(npm("core-js", "2.6.5"))
-    implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.7.1")
     implementation("org.jetbrains:kotlin-react:$REACT_KT_V-$KT_WRAPPER_V")
     implementation("org.jetbrains:kotlin-react-dom:$REACT_KT_V-$KT_WRAPPER_V")
     implementation("org.jetbrains:kotlin-styled:1.0.0-$KT_WRAPPER_V")
