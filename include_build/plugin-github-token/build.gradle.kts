@@ -9,7 +9,7 @@ plugins {
 
 val PLUGIN_NAME = "GitHub token plugin"
 val PLUGIN_ID = "ru.tutu.github.token"
-val VERSION = "1.3.0"
+val VERSION = "1.3.1"
 val TAGS = listOf("github", "token")
 
 group = "ru.tutu"
