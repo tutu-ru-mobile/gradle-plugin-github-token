@@ -9,7 +9,7 @@ plugins {
 
 val PLUGIN_NAME = "GitHub token plugin"
 val PLUGIN_ID = "ru.tutu.github.token"
-val VERSION = "1.3.4"
+val VERSION = "1.3.5"
 val TAGS = listOf("github", "token")
 
 group = "ru.tutu"
@@ -65,6 +65,7 @@ dependencies {
     implementation("io.ktor:ktor-client-core:$KTOR_VERSION")
     implementation("io.ktor:ktor-client-apache:$KTOR_VERSION")
     implementation("io.ktor:ktor-html-builder:$KTOR_VERSION")
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.3")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
     testImplementation("org.slf4j:slf4j-jdk14:1.7.25")
